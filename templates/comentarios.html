@@ -1,0 +1,17 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Comentários</title>
+</head>
+<body>
+    <h1>Comentários dos amigos do ambiente:</h1>
+    <ul>
+    {% for comentario in comentarios %}
+        <li>{{ comentario }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
+

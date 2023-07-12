@@ -12,14 +12,20 @@
     <p>&nbsp;</p>
     <img src="{{ url_for('static', filename='fim.jpg') }}" alt="fim">
     <p>&nbsp;</p>
+    <p>Deixa um comentário sobre o desafio!</p>
     
-
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
                 <p style="color: {{ 'green' if category == 'success' else 'red' }}">{{ message }}</p>
             {% endfor %}
         {% endif %}
-    {% endwith %}           
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('fim') }}">
+        {{ form.hidden_tag() }}
+        {{ form.comentario() }}
+        {{ form.submit() }}
+    </form>           
 </body>
 </html>

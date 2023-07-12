@@ -9,3 +9,9 @@ class RespostaForm(FlaskForm):
 # Classe Avancar ( responsavel pelo inicio do desafio)
 class AvancarForm(FlaskForm):
     submit = SubmitField('Avançar')  # Botão de submissão do formulário para avanço para a proxima pagina
+    
+# Classe comentario (para adicionar comentarios à pagina)
+class ComentarioForm(FlaskForm):
+    comentario = StringField('Mensagem:')  # Campo de introdução do texto para o comentário
+    submit = SubmitField('Enviar')  # Submeter
+    

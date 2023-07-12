@@ -1,10 +1,11 @@
 
 from flask import Flask, render_template, request, redirect, url_for, flash
-from forms import RespostaForm, AvancarForm
+from forms import RespostaForm, AvancarForm, ComentarioForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'segredo'
 respostas = ['co2', 'solar', 'electricos', 'reciclar']  # Lista que contem as respostas
+comentarios = []  # lista para guardar os comentarios
 
 # Função que redireciona para a página home.html (inicio)
 @app.route("/", methods=['GET', 'POST'])
@@ -59,9 +60,20 @@ def desafio4():
 
 # Função que redireciona para a página fim.html
 def fim():
+    form = ComentarioForm() # 
+    if form.validate_on_submit():
+        comentario = form.comentario.data
+        comentarios.append(comentario)  # Insere o comentario na lista
+        print(f'Mensagem recebida: {comentario}') # Print da mensagem no terminal
+        flash(f'Mensagem enviada com sucesso! Já existem {len(comentarios)} mensagem(s).', 'success')
+        return redirect(url_for('ver_comentarios'))
+    return render_template('fim.html', form=form)  # Usa a template definida para a pagina fim
+@app.route("/ver_comentarios", methods=['GET', 'POST'])
 
-        
-    return render_template('fim.html')  # Usa a template definida para a pagina fim
+
+# Função para adicionar comentarios
+def ver_comentarios():
+    return render_template('comentarios.html', comentarios=comentarios)
 
 
 if __name__ == "__main__":
