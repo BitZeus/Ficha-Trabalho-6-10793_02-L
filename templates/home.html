@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio alterações climáticas!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+    <h1>Bem-vindo ao desafio das alterações climáticas!</h1>
+    <p>&nbsp;</p>
+    <p>Este site aborda a questão das alterações climáticas.</p>
+    <p>As alterações climáticas são atualmente uma preocupação a nível global.</p>
+    <p>O planeta tem sofrido com diversos maus comportamentos do ser humano, e por isso alguns fenômenos têm sido observados.</p>
+    <p>Grandes quantidades de CO2 (dióxido de carbono) são liberadas na atmosfera todos os dias, sendo uma das principais causas.</p>
+    <p>Investir em energias renováveis como a energia solar, optar por veículos elétricos e reciclar são algumas das ações que podemos tomar.</p>
+    <p>&nbsp;</p>
+    <p>Portanto, aqui está um breve desafio para que você possa se tornar um amigo do planeta &#41;</p>
+    <p>&nbsp;</p>
+    <img src="{{ url_for('static', filename='home.jpg') }}" alt="home">
+    <p>&nbsp;</p>
+    <form method="POST" action="{{ url_for('home') }}">
+        {{ form.hidden_tag() }}
+        {{ form.submit() }}
+    </form>
+</body>
+</html>

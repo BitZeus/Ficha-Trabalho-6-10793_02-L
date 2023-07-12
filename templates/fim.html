@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>FIM!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+    <h1>Parabéns! És um amigo do ambiente!</h1>
+    <p>&nbsp;</p>
+    <p>Concluiste o desafio com sucesso e o planeta agradece.</p>
+    <p>&nbsp;</p>
+    <img src="{{ url_for('static', filename='fim.jpg') }}" alt="fim">
+    <p>&nbsp;</p>
+    
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p style="color: {{ 'green' if category == 'success' else 'red' }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}           
+</body>
+</html>
