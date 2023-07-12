@@ -2,14 +2,14 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Desafio 2</title>
+    <title>Desafio 3</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
 </head>
 <body>
-    <h1>Desafio 2</h1>
-    <p>Que energia renovável pode ser instalada nos telhados das casas?</p>
+    <h1>Desafio 3</h1>
+    <p>Que veículos são alternativa aos veículos a combustivel?</p>
     <p>&nbsp;</p>
-    <img src="{{ url_for('static', filename='desafio2.jpg') }}" alt="desafio2">
+    <img src="{{ url_for('static', filename='desafio3.jpg') }}" alt="desafio3">
     <p>&nbsp;</p>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -20,7 +20,7 @@
         {% endif %}
     {% endwith %}
 
-    <form method="POST" action="{{ url_for('desafio2') }}">
+    <form method="POST" action="{{ url_for('desafio3') }}">
         {{ form.hidden_tag() }}
         {{ form.resposta() }}
         {{ form.submit() }}

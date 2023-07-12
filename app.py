@@ -4,7 +4,7 @@ from forms import RespostaForm, AvancarForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'segredo'
-respostas = ['co2', 'solar']  # Lista que contem as respostas
+respostas = ['co2', 'solar', 'electricos']  # Lista que contem as respostas
 
 # Função que redireciona para a página home.html (inicio)
 @app.route("/", methods=['GET', 'POST'])
@@ -31,10 +31,20 @@ def desafio2():
     form = RespostaForm()
     if form.validate_on_submit():  # Ao pressionar o botao executa as operações abaixo
         if form.resposta.data.lower() == respostas[1]:  # Verifica se a resposta corresponde na lista de respostas na posição 1
+            return redirect(url_for('desafio3'))  # Redireciona para a pagina desafio3 se resposta correcta
+        else:
+            flash('Resposta incorreta. Tenta novamente.', 'error')
+    return render_template('desafio2.html', form=form)  # Usa a template definida para a pagina desafio2
+@app.route("/desafio3", methods=['GET', 'POST'])  # Decorador para a pagina desafio3
+
+def desafio3():
+    form = RespostaForm()
+    if form.validate_on_submit():  # Ao pressionar o botao executa as operações abaixo
+        if form.resposta.data.lower() == respostas[2]:  # Verifica se a resposta corresponde na lista de respostas na posição 1
             return redirect(url_for('fim'))  # Redireciona para a pagina fim se resposta correcta
         else:
             flash('Resposta incorreta. Tenta novamente.', 'error')
-    return render_template('desafio2.html', form=form)  # Usa a template definida para a pagina desafio1
+    return render_template('desafio3.html', form=form)  # Usa a template definida para a pagina desafio3
 @app.route("/fim", methods=['GET', 'POST'])  # Decorador para a pagina fim
 
 
